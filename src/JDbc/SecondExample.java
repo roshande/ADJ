@@ -37,15 +37,18 @@ public class SecondExample {
 //STEP 4: Execute a query
             System.out.println("Creating statement...");
 
+            //Always use prepareStatement
+            // Values are replaced by "?" which can be changed later on
             //stmt = conn.prepareStatement("insert into employees(first,lat,age) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             stmt = conn.prepareStatement("insert into employees(first,last,age) values(?,?,?)");
-//id is auto-increment
+            //id is auto-increment
             //int noRec = 0;
             //  while(noRec<2){ //to insert multiple records
             stmt.setString(1, "abc");//1 specifies the first parameter in the query  
             stmt.setString(2, "Ratan");
             stmt.setInt(3, 20);
 
+            //for (DML)Data modification/manipulative query use executeUpdate
             int i = stmt.executeUpdate();
             System.out.println(i + " records inserted");
 //            noRec++;
@@ -86,4 +89,4 @@ public class SecondExample {
         }//end try
         System.out.println("Goodbye!");
     }//end main
-}//end FirstExample
+}//end SecondExample

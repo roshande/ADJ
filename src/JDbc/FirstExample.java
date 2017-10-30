@@ -15,8 +15,10 @@ import java.sql.*;
 
 public class FirstExample {
    // JDBC driver name and database URL
-   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   static final String DB_URL = "jdbc:mysql://localhost/emp"; //for oracle => jdbc:oracle:thin:@hostname:port Number:databaseName
+   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+   //jdbc:vender://@hostname:port/db_name
+   static final String DB_URL = "jdbc:mysql://localhost/Student_db"; 
+   //for oracle => jdbc:oracle:thin:@hostname:port Number:databaseName
 
    //  Database credentials
    static final String USER = "root";
@@ -38,7 +40,8 @@ public class FirstExample {
       System.out.println("Creating statement...");
       stmt = conn.createStatement();
       String sql;
-      sql = "SELECT id, first, last, age FROM Employees";
+      sql = "SELECT * FROM student";
+      //sql = "SELECT id, first, last, age FROM Employees";
       ResultSet rs = stmt.executeQuery(sql);
 
       //STEP 5: Extract data from result set
@@ -55,6 +58,7 @@ public class FirstExample {
          System.out.print(", First: " + first);
          System.out.println(", Last: " + last);
       }
+      
       //STEP 6: Clean-up environment
       rs.close();
       stmt.close();
